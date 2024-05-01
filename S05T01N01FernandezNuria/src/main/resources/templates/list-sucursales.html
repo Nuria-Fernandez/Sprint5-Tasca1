@@ -1,0 +1,48 @@
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Sucursales</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>List Sucursales</h1>
+    <div class="mb-3">
+        <a th:href="@{/sucursal/add}" class="btn btn-success">Agregar Sucursal</a>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>País</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="sucursal : ${sucursales}">
+            <td th:text="${sucursal.pk_SucursalID}"></td>
+            <td th:text="${sucursal.nomSucursal}"></td>
+            <td th:text="${sucursal.paisSucursal}"></td>
+            <td th:text="${sucursal.tipusSucursal}"></td>
+            <td>
+                <a th:href="@{/sucursal/update/{id}(id=${sucursal.pk_SucursalID})}" class="btn btn-primary">Actualizar</a>
+                <a th:href="@{/sucursal/delete/{id}(id=${sucursal.pk_SucursalID})}" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
